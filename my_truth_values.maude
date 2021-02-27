@@ -1,0 +1,29 @@
+
+fmod TRUTH-VALUES is
+********************ASSINATURA**************
+*** Declaracao dos sortes
+sort Truth-Value .
+*** Declaracao dos operadores
+op true :   -> Truth-Value [ctor] .
+op false :   -> Truth-Value [ctor] .
+op not_ : Truth-Value   -> Truth-Value [prec 20] .
+op _^_ : Truth-Value Truth-Value    -> Truth-Value [comm assoc prec 30] .
+op _v_ : Truth-Value Truth-Value    -> Truth-Value [comm assoc prec 40] .
+op _=>_ : Truth-Value Truth-Value    -> Truth-Value [prec 50] .
+****************** AXIOMAS EQdUACIONAIS *****************************
+vars t u : Truth-Value .
+*** Definicao das operacoes
+*** Definicao da operacao de negacao (not_)
+eq not true     = false .
+eq not false    = true  .
+*** Definicao da operacao de conjunto (_^_)
+eq t ^ true     = t .
+eq t ^ false    = false .
+*** eq t ^ u    =   u ^ t .
+*** Definicao da operacao de disjuncao (_v_)
+eq t v true =   true .
+eq t v false =  t .
+*** eq t v u    =   u v t .
+*** Definicao da operacao de implicacao (_=>_)
+eq t => u   =   (not t) v u .
+endfm
