@@ -1,0 +1,72 @@
+fmod NATURALS is
+*** Inclusao de espec
+protecting TRUTH-VALUES .
+*** Declaracao dos sortes
+sort Natural .
+*** Declaracao op gerador
+
+op 0:   -> Natural [ctor] .
+op succ_:  Natural -> Natural [ctor] .
+
+op pred_:   -> Natural .
+op _<_:  Natural Natural -> Truth-Value .
+op _>_:  Natural Natural -> Truth-Value .
+op _is_:  Natural Natural -> Truth-Value [comm ] .
+op _+_:  Natural Natural -> Natural [comm assoc prec 35] .
+op _*_:  Natural Natural -> Natural [comm assoc prec 30] .
+op _≠_: Natural Natural -> Truth-Value .
+op _÷_ : Natural Natural -> Natural .
+op _**_ : Natural Natural -> Natural .
+
+ops: 0 1 2 3 4 5 6 7 8 9 : -> Natural
+_ _ : Natural Natural -> Natural .
+
+vars n m: Natural .
+
+*** Operacao predecessor
+eq pred succ n = n .
+eq pred 0 = 0 .
+
+*** Operacao menor <
+
+eq 0 < 0    =   false .
+eq 0 < succ n    =   true .
+eq succ n < 0    =   false .
+eq succ n < succ m          =   n < m .
+
+*** Operacao maior
+eq n > m    =   m < n .
+
+*** Operacao igual (is)
+eq 0 is n    = true .
+eq 0 is succ n  =   false .
+eq succ n is succ m         = n is m .
+
+*** Operacao de diferente ≠
+eq n ≠ m    =   not (n is m) .
+
+*** Operacao de adicao (+)
+eq 0 + n    = n .
+eq (succ n) + m     = succ(n + m) .
+
+*** Operacao de multiplicacao (*)
+eq 0 * n        =   0   .
+eq (succ n)*m   =   m+(n * m) .
+
+*** Operacao de exponenciacao (**)
+eq n ** 0       =   1   .
+eq (succ n)**m  =   m*(n*n)
+
+*** Operacao de subtracao (-)
+eq n - 0    =   n   .
+eq (pred n) - m     =   pred(n - m) .
+
+*** Operacoes auxiliares de divisao
+*** Op div pra ver se eh possivel a divisao
+eq n div m  =   (n - m) ≠ 0 => (n - m)
+
+*** Operacao de divisao (÷)
+ceq n ÷ m = 0 if m > n .
+ceq n ÷ m        =   succ((n - m) ÷ m) if m <= m
+
+endfm

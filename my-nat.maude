@@ -3,11 +3,14 @@ sort Nat,Truth-Value .
 op zero : -> Nat .  
 op s_ : Nat -> Nat .  
 op _+_ : Nat Nat -> Nat .
-op _=_ : Nat Nat -> Truth-Value .
+op _==_ : Nat Nat -> Truth-Value .
+op _≠_ : Nat Nat -> Truth-Value .
 
-vars N M : Nat .  0
+vars N M : Nat .
 
 eq zero + N = N .  
 eq s N + M = s (N + M) .
+eq N == M = N is M
+eq N ≠ M = 
 
 endfm
