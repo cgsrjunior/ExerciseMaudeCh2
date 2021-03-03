@@ -1,0 +1,42 @@
+fmod DECIMAL is
+*** Inclusao de espec
+protecting NATURALS .
+*** Declaracao dos sortes
+sort Natural .
+
+ops: 1 2 3 4 5 6 7 8 9 : -> Natural .
+op _ _: Natural Natural -> Natural [comm assoc prec gather (E e)] .
+op convert_: Natural -> Decimal .
+
+vars p q: Natural .
+
+*** Definindo a formacao dos numeros 
+eq 1 = succ 0 .
+eq 2 = succ succ 0 .
+eq 3 = succ succ succ 0 .
+eq 4 = succ succ succ succ 0 .
+eq 5 = succ succ succ succ succ 0 .
+eq 6 = succ succ succ succ succ succ 0 .
+eq 7 = succ succ succ succ succ succ succ 0 .
+eq 8 = succ succ succ succ succ succ succ succ 0 .
+eq 9 = succ succ succ succ succ succ succ succ succ 0 .
+eq 10 = succ succ succ succ succ succ succ succ succ succ 0 .
+
+*** Aqui se da a composicao de um numero > 10
+eq p q = p * 10 + q .
+
+***Conversao natural p/ decimal
+eq convert 0 = 0
+eq convert 1 = 1
+eq convert 2 = 2
+eq convert 3 = 3
+eq convert 4 = 4
+eq convert 5 = 5
+eq convert 6 = 6
+eq convert 7 = 7
+eq convert 8 = 8
+eq convert 9 = 9
+eq convert(p q) = p q
+
+
+endfm
